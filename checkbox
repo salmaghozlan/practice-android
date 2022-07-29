@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:id="@+id/lay"
+    tools:context=".MainActivity">
+   for check box programs
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="select any language" />
+
+    <CheckBox
+        android:id="@+id/javaBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="java" />
+
+    <CheckBox
+        android:id="@+id/cBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="c++" />
+
+    <CheckBox
+        android:id="@+id/phpBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="php" />
+
+    <CheckBox
+        android:id="@+id/htmlBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="html" />
+
+    <Button
+        android:id="@+id/clearb"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="clear" />
+
+    <Button
+        android:id="@+id/selectallb"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="select all" />
+
+    <Button
+        android:id="@+id/showb"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="show selected item" />
+
+    <CheckBox
+        android:id="@+id/Box2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="2" />
+
+    <CheckBox
+        android:id="@+id/Box4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="4" />
+
+    <CheckBox
+        android:id="@+id/Box6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="6" />
+
+    <Button
+        android:id="@+id/sumb"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="sum" />
+
+    <Button
+        android:id="@+id/mulb"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="mul" />
+
+</LinearLayout>
+
+
+    Button b1,b2,b3,sum,mul;
+    CheckBox c1,c2,c3,c4,box2,box4,box6;
+    String s = "";
+    int a =0;
+    int b = 1 ;
+ @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        b1=(Button)   findViewById(R.id.clearb);
+        b2=(Button) findViewById(R.id.selectallb);
+        b3=(Button) findViewById(R.id.showb);
+        c1=(CheckBox)findViewById(R.id.javaBox);
+        c2=(CheckBox)findViewById(R.id.cBox);
+        c3=(CheckBox)findViewById(R.id.phpBox);
+        c4=(CheckBox)findViewById(R.id.htmlBox);
+        sum=(Button)   findViewById(R.id.sumb);
+        mul=(Button)   findViewById(R.id.mulb);
+        box2=(CheckBox)findViewById(R.id.Box2);
+        box4=(CheckBox)findViewById(R.id.Box4);
+        box6=(CheckBox)findViewById(R.id.Box6);
+ //for checkbox programs
+        b1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                c1.setChecked(false);
+                c2.setChecked(false);
+                c3.setChecked(false);
+                c4.setChecked(false);
+
+
+            }
+        });
+        b2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                c1.setChecked(true);
+                c2.setChecked(true);
+                c3.setChecked(true);
+                c4.setChecked(true);
+            }
+        });
+
+        b3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(c1.isChecked()){
+                    s += c1.getText()+"\n";
+                }
+                if(c2.isChecked()){
+                    s += c2.getText()+"\n";
+                }
+                if(c3.isChecked()){
+                    s += c3.getText() +"\n";
+                }
+                if(c4.isChecked()){
+                    s += c4.getText() +"\n";
+                }
+                Toast.makeText(getApplicationContext(),s, Toast.LENGTH_LONG ).show();
+
+            }
+        });
+
+        sum.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(box2.isChecked()){
+                    a += 2 ;
+                }
+                if(box4.isChecked()){
+                    a += 4 ;
+                }
+                if(box6.isChecked()){
+                    a += 6 ;
+                }
+                Toast.makeText(getApplicationContext(),String.valueOf(a), Toast.LENGTH_LONG ).show();
+                a=0;
+            }
+        });
+
+        mul.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(box2.isChecked()){
+                    b *= 2 ;
+                }
+                if(box4.isChecked()){
+                    b *= 4 ;
+                }
+                if(box6.isChecked()){
+                    b *= 6 ;
+                }
+                Toast.makeText(getApplicationContext(),String.valueOf(b), Toast.LENGTH_LONG ).show();
+                b= 1;
+            }
+        });
+
