@@ -1,0 +1,175 @@
+package com.example.myfirstapplication;
+
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.graphics.Color;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Adapter;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.Spinner;
+import android.widget.Switch;
+import android.widget.TextView;
+import android.widget.Toast;
+import android.widget.ToggleButton;
+
+public class MainActivity extends AppCompatActivity{
+    Button b1;
+    String [] operations = {"add", "sub" , "mul"};
+
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        b1 = (Button) findViewById(R.id.button);
+
+        b1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder ab = new AlertDialog.Builder(MainActivity.this);
+                ab.setTitle("math operation");
+                ab.setItems(operations, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        switch (i) {
+                            case 0:
+                                AlertDialog.Builder abadd = new AlertDialog.Builder(MainActivity.this);
+                                final LinearLayout lay = new LinearLayout(MainActivity.this);
+                                lay.setOrientation(LinearLayout.VERTICAL);
+                                final EditText et1 = new EditText(MainActivity.this);
+                                final EditText et2 = new EditText(MainActivity.this);
+
+                                et1.setHint("Enter no 1");
+                                et2.setHint("Enter no 2");
+
+                                lay.addView(et1);
+                                lay.addView(et2);
+
+                                abadd.setView(lay);
+                                abadd.setPositiveButton("add", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        Double no1 = Double.parseDouble(et1.getText().toString());
+                                        Double no2 = Double.parseDouble(et2.getText().toString());
+                                        Double addres = no1 + no2;
+                                        String addresult = addres.toString();
+                                        AlertDialog.Builder addp = new AlertDialog.Builder(MainActivity.this);
+                                        addp.setTitle(addresult);
+                                        addp.setPositiveButton("ok", new DialogInterface.OnClickListener() {
+                                            @Override
+                                            public void onClick(DialogInterface dialogInterface, int i) {
+                                                MainActivity.this.finish();
+                                            }
+                                        });
+                                        AlertDialog ob = addp.create();
+                                        ob.show();
+
+
+                                    }
+                                });
+                                AlertDialog ob = abadd.create();
+                                ob.show();
+                                break;
+                            case 1:
+                                AlertDialog.Builder absub = new AlertDialog.Builder(MainActivity.this);
+                                final LinearLayout lay1 = new LinearLayout(MainActivity.this);
+                                lay1.setOrientation(LinearLayout.VERTICAL);
+                                final EditText et11 = new EditText(MainActivity.this);
+                                final EditText et22 = new EditText(MainActivity.this);
+
+                                et11.setHint("Enter no 1");
+                                et22.setHint("Enter no 2");
+
+                                lay1.addView(et22);
+                                lay1.addView(et22);
+
+                                absub.setView(lay1);
+                                absub.setPositiveButton("sub", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        Double no1 = Double.parseDouble(et11.getText().toString());
+                                        Double no2 = Double.parseDouble(et22.getText().toString());
+                                        Double sub = no1 - no2;
+                                        String result = sub.toString();
+                                        AlertDialog.Builder subp = new AlertDialog.Builder(MainActivity.this);
+                                        subp.setTitle(result);
+                                        subp.setPositiveButton("ok", new DialogInterface.OnClickListener() {
+                                            @Override
+                                            public void onClick(DialogInterface dialogInterface, int i) {
+                                                MainActivity.this.finish();
+                                            }
+                                        });
+                                        AlertDialog ob = subp.create();
+                                        ob.show();
+
+
+                                    }
+                                });
+                                AlertDialog ob1 = absub.create();
+                                ob1.show();
+                                break;
+                        
+
+                            case 2:
+                                AlertDialog.Builder abmul = new AlertDialog.Builder(MainActivity.this);
+                                final LinearLayout lay2 = new LinearLayout(MainActivity.this);
+                                lay2.setOrientation(LinearLayout.VERTICAL);
+                                final EditText et111 = new EditText(MainActivity.this);
+                                final EditText et222 = new EditText(MainActivity.this);
+
+                                et111.setHint("Enter no 1");
+                                et222.setHint("Enter no 2");
+
+                                lay2.addView(et111);
+                                lay2.addView(et222);
+
+                                abmul.setView(lay2);
+                                abmul.setPositiveButton("mul", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        Double no1 = Double.parseDouble(et111.getText().toString());
+                                        Double no2 = Double.parseDouble(et222.getText().toString());
+                                        Double mulres = no1 * no2;
+                                        String mulresult = mulres.toString();
+                                        AlertDialog.Builder mulp = new AlertDialog.Builder(MainActivity.this);
+                                        mulp.setTitle(mulresult);
+                                        mulp.setPositiveButton("ok", new DialogInterface.OnClickListener() {
+                                            @Override
+                                            public void onClick(DialogInterface dialogInterface, int i) {
+                                                MainActivity.this.finish();
+                                            }
+                                        });
+                                        AlertDialog ob = mulp.create();
+                                        ob.show();
+
+
+                                    }
+                                });
+                                AlertDialog ob2 = abmul.create();
+                                ob2.show();
+                                break;
+                        }}
+                        });
+
+                        AlertDialog ob3=ab.create();
+                        ob3.show();
+                    }
+
+
+
+        });
+                }}
+
