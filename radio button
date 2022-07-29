@@ -1,0 +1,40 @@
+package com.example.myfirstapplication;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import ...
+
+public class MainActivity extends AppCompatActivity {    
+LinearLayout lay ;
+    RadioGroup rg;
+    RadioButton rb ;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main); 
+
+        lay = (LinearLayout) findViewById(R.id.lay);
+        rg = (RadioGroup) findViewById(R.id.rg);
+
+
+
+rg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                rb = (RadioButton) findViewById(i);
+                if(i == R.id.redb){
+                    lay.setBackgroundColor(Color.RED);
+                }
+                if (i == R.id.greenb){
+                    lay.setBackgroundColor(Color.GREEN);
+                }
+                if(i == R.id.blueb){
+                    lay.setBackgroundColor(Color.BLUE);
+                }
+                if(i == R.id.exitb){
+                    finish();
+                }
+
+            }
+        });
