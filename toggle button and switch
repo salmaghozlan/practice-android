@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:id="@+id/lay"
+    tools:context=".MainActivity"> 
+
+<ToggleButton
+        android:id="@+id/toggleButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="ToggleButton" />
+
+    <EditText
+        android:id="@+id/firstname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="first name"
+        android:enabled="false"
+        />
+
+    <EditText
+        android:id="@+id/lastname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="last name"
+        android:enabled="false"
+
+        />
+
+    <Button
+        android:id="@+id/showname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="show name"
+        android:enabled="false"
+
+        />
+
+    <Switch
+        android:id="@+id/switch1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Switch" />
+</LinearLayout>
+
+EditText first , last;
+    Button show;
+    ToggleButton tg ;
+    Switch switch1 ;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);       
+first = (EditText) findViewById(R.id.firstname);
+        last = (EditText) findViewById(R.id.lastname);
+        tg = (ToggleButton) findViewById(R.id.toggleButton);
+        switch1 = (Switch) findViewById(R.id.switch1);
+
+tg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(tg.isChecked()) {
+                    first.setEnabled(true);
+                    last.setEnabled(true);
+                    show.setEnabled(true);
+
+                  Toast.makeText(getApplicationContext(),"ON" , Toast.LENGTH_LONG).show();
+                }
+                else {
+                    first.setText("");
+                    last.setText("");
+                    first.setEnabled(false);
+                    last.setEnabled(false);
+                    show.setEnabled(false);
+                    Toast.makeText(getApplicationContext(),"OFF" , Toast.LENGTH_LONG).show();
+
+                }
+            }
+        });
+        show.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String sf = first.getText().toString();
+                String sl = last.getText().toString();
+                Toast.makeText(getApplicationContext(),"welcome" + (sf + sl) , Toast.LENGTH_LONG).show();
+            }
+        });
+
+
+        switch1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if(b){
+                    first.setEnabled(true);
+                    last.setEnabled(true);
+                    show.setEnabled(true);
+
+                    Toast.makeText(getApplicationContext(),"ON" , Toast.LENGTH_LONG).show();
+
+                }
+                else{
+                    first.setText("");
+                    last.setText("");
+                    first.setEnabled(false);
+                    last.setEnabled(false);
+                    show.setEnabled(false);
+                    Toast.makeText(getApplicationContext(),"OFF" , Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+    }
