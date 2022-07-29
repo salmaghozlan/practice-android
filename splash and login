@@ -1,0 +1,195 @@
+MainActivity
+
+package com.example.myfirstapplication;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
+import android.graphics.Color;
+import android.os.Bundle;
+import android.widget.TextView;
+
+public class welcomeActivity extends AppCompatActivity {
+
+    TextView tv ;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_welcome);
+
+        tv = (TextView)findViewById(R.id.textView);
+
+        Intent i = getIntent();
+        String s = i.getStringExtra("name");
+        String n = i.getStringExtra("number");
+        int no = Integer.parseInt(n);
+        if(no%2 == 0 ){
+            tv.setBackgroundColor(Color.RED);
+        }
+        else
+        {
+            tv.setBackgroundColor(Color.GREEN);
+        }
+        tv.setText("welcme "+s);
+    }
+}
+
+
+splashActivity 
+
+package com.example.myfirstapplication;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
+import android.os.Bundle;
+
+public class splashActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_splash);
+        Thread t = new Thread()
+        {
+            @Override
+            public void run() {
+                try
+                {
+                    Thread.sleep(5000);
+                }
+                catch(Exception e ){}
+                finally
+                {
+                    Intent i = new Intent(getApplicationContext(),MainActivity.class);
+                    startActivity(i);
+                }
+            }
+
+        }; t.start();
+    }
+
+}
+
+welcomeActivity
+
+package com.example.myfirstapplication;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
+import android.graphics.Color;
+import android.os.Bundle;
+import android.widget.TextView;
+
+public class welcomeActivity extends AppCompatActivity {
+
+    TextView tv ;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_welcome);
+
+        tv = (TextView)findViewById(R.id.textView);
+
+        Intent i = getIntent();
+        String s = i.getStringExtra("name");
+        String n = i.getStringExtra("number");
+        int no = Integer.parseInt(n);
+        if(no%2 == 0 ){
+            tv.setBackgroundColor(Color.RED);
+        }
+        else
+        {
+            tv.setBackgroundColor(Color.GREEN);
+        }
+        tv.setText("welcme "+s);
+    }
+}
+
+
+activity_main
+
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:id="@+id/lay"
+    tools:context=".MainActivity">
+
+
+    <EditText
+        android:id="@+id/usernamelog"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="100dp"
+        android:layout_marginRight="100dp"
+        android:ems="10"
+        android:hint="username"
+        android:inputType="textPersonName"
+        android:text="Name"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:layout_editor_absoluteY="28dp" />
+
+    <EditText
+        android:id="@+id/passlog"
+        android:layout_width="314dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="password"
+        android:inputType="textPersonName"
+        android:text="password"
+        tools:layout_editor_absoluteX="104dp"
+        tools:layout_editor_absoluteY="91dp" />
+
+    <Button
+        android:id="@+id/login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="login"
+        tools:layout_editor_absoluteX="146dp"
+        tools:layout_editor_absoluteY="178dp" />
+
+    <EditText
+        android:id="@+id/numMA"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="number" />
+</LinearLayout>
+
+
+activity_splash
+
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/android"
+    tools:context=".splashActivity">
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+activity_welcome
+
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".welcomeActivity">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        tools:layout_editor_absoluteX="118dp"
+        tools:layout_editor_absoluteY="183dp" />
+</androidx.constraintlayout.widget.ConstraintLayout>
