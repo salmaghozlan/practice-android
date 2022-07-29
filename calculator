@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:id="@+id/lay"
+    tools:context=".MainActivity">
+
+
+
+    <EditText
+        android:id="@+id/num1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="enter the first number"
+        android:inputType="number"
+        tools:layout_editor_absoluteX="157dp"
+        tools:layout_editor_absoluteY="27dp" />
+
+
+
+
+
+
+    <EditText
+        android:id="@+id/num2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="enter  the second number"
+        android:inputType="number"
+        tools:layout_editor_absoluteX="157dp"
+        tools:layout_editor_absoluteY="85dp" />
+
+    <TextView
+        android:id="@+id/result"
+        android:layout_width="103dp"
+        android:layout_height="34dp"
+        android:text="TextView"
+        tools:layout_editor_absoluteX="228dp"
+        tools:layout_editor_absoluteY="311dp" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="73dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/plus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/plus"
+            tools:ignore="UsingOnClickInXml"
+            tools:layout_editor_absoluteX="161dp"
+            tools:layout_editor_absoluteY="142dp" />
+
+        <Button
+            android:id="@+id/minus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="-"
+            tools:ignore="UsingOnClickInXml"
+            tools:layout_editor_absoluteX="307dp"
+            tools:layout_editor_absoluteY="142dp" />
+
+        <Button
+            android:id="@+id/multi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="*"
+            tools:layout_editor_absoluteX="161dp"
+            tools:layout_editor_absoluteY="221dp" />
+
+        <Button
+            android:id="@+id/divid"
+            android:layout_width="84dp"
+            android:layout_height="48dp"
+            android:text="/"
+            tools:layout_editor_absoluteX="307dp"
+            tools:layout_editor_absoluteY="221dp" />
+    </LinearLayout>
+</LinearLayout>
+
+
+ 
+    Button plus,minus,multi,div;
+    EditText num1 , num2 ;
+    TextView tv;
+ @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        
+        tv = (TextView)findViewById(R.id.result);
+        plus =(Button)    findViewById(R.id.plus);
+        minus =(Button)   findViewById(R.id.minus);
+        multi =(Button)   findViewById(R.id.multi);
+        div=(Button)   findViewById(R.id.divid);
+   
+        plus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                num1 = (EditText) findViewById(R.id.num1);
+                num2 = (EditText) findViewById(R.id.num2);
+                double numone = Integer.parseInt(num1.getText().toString());
+                double numtwo = Integer.parseInt(num2.getText().toString());
+                double sum= numone + numtwo ;
+                tv.setText(Double.toString(sum));
+                num1.setText("");
+                num2.setText("");
+
+            }
+        });
+
+
+
+
+
+                        minus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                double numone = Integer.parseInt(num1.getText().toString());
+                double numtwo = Integer.parseInt(num2.getText().toString());
+                double sub= numone - numtwo ;
+                tv.setText(Double.toString(sub));
+                num1.setText("");
+                num2.setText("");
+
+            }
+        });
+
+        multi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                double numone = Integer.parseInt(num1.getText().toString());
+                double numtwo = Integer.parseInt(num2.getText().toString());
+                double multiple= numone * numtwo ;
+                tv.setText(Double.toString(multiple));
+                num1.setText("");
+                num2.setText("");
+
+            }
+        });
+
+        div.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                double numone = Integer.parseInt(num1.getText().toString());
+                double numtwo = Integer.parseInt(num2.getText().toString());
+                double divided= numone / numtwo ;
+                tv.setText(Double.toString(divided));
+                num1.setText("");
+                num2.setText("");
+
+            }
+        });
+
+
+
