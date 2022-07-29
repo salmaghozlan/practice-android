@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:id="@+id/lay"
+    tools:context=".MainActivity">
+for radiobuttons and checkbox mix program
+
+    <EditText
+        android:id="@+id/etone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="enter no 1 "
+        android:inputType="number"
+        android:enabled="false"
+        />
+
+    <EditText
+        android:id="@+id/ettow"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="enter no 2"
+        android:inputType="number"
+        android:enabled="false"
+        />
+
+    <RadioGroup
+        android:id="@+id/rg2"
+        android:layout_width="match_parent"
+        android:layout_height="224dp">
+
+        <RadioButton
+            android:id="@+id/plusr"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:enabled="false"
+            android:text="+" />
+
+        <RadioButton
+            android:id="@+id/subr"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:enabled="false"
+            android:text="-" />
+
+        <RadioButton
+            android:id="@+id/mulr"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:enabled="false"
+            android:text="*" />
+
+    </RadioGroup>
+
+    <CheckBox
+        android:id="@+id/enablebox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:text="enable"
+        android:onClick="enabledallcontent"
+        />
+
+</LinearLayout>
+
+     EditText etone , ettow;
+    RadioGroup rg2;
+    RadioButton rb2,plusr,subr,mulr;
+
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        etone = (EditText)findViewById(R.id.etone);
+        ettow = (EditText)findViewById(R.id.ettow);
+        rg2=(RadioGroup)findViewById(R.id.rg2);
+
+
+        rg2.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                
+                if(rg2.getCheckedRadioButtonId()==R.id.mulr){
+                    Double a = Double.parseDouble(etone.getText().toString());
+                    Double b = Double.parseDouble(ettow.getText().toString());
+                    Toast.makeText(getApplicationContext(),""+(a*b),Toast.LENGTH_LONG).show();
+                }
+                if(rg2.getCheckedRadioButtonId()==R.id.subr){
+                    Double a = Double.parseDouble(etone.getText().toString());
+                    Double b = Double.parseDouble(ettow.getText().toString());
+                    Toast.makeText(getApplicationContext(),""+(a-b),Toast.LENGTH_LONG).show();
+                }
+                if(rg2.getCheckedRadioButtonId()==R.id.plusr){
+                    Double a = Double.parseDouble(etone.getText().toString());
+                    Double b = Double.parseDouble(ettow.getText().toString());
+                    Toast.makeText(getApplicationContext(),""+(a+b),Toast.LENGTH_LONG).show();
+                }
+
+            }
+        });
+
+
+    }
+
+    public void enabledallcontent(View view) {
+
+        plusr = (RadioButton)findViewById(R.id.plusr);
+        subr = (RadioButton) findViewById(R.id.subr);
+        mulr = (RadioButton)findViewById(R.id.mulr);
+
+        etone.setEnabled(true);
+        ettow.setEnabled(true);
+        plusr.setEnabled(true);
+        subr.setEnabled(true);
+        mulr.setEnabled(true);
+
+    }
+
+}
